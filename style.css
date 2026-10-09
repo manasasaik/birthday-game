@@ -1,0 +1,1624 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: #ffd9ec;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   MAIN GAME
+========================= */
+
+#game {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            #ffc9e5,
+            #d5f3ff
+        );
+}
+
+
+.story-card,
+.gift-card,
+.bracelet-card {
+    width: min(92%, 520px);
+    padding: 35px;
+    text-align: center;
+
+    background: white;
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.18);
+}
+
+
+.cake {
+    font-size: 80px;
+}
+
+.big {
+    font-size: 90px;
+}
+
+
+h1 {
+    margin: 15px 0;
+
+    color: #d63384;
+
+    font-size: 40px;
+}
+
+
+h2 {
+    color: #c22572;
+    margin: 15px 0;
+}
+
+
+.story-card p,
+.gift-card p,
+.bracelet-card p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+
+.pink-text {
+    color: #d63384;
+    font-weight: bold;
+}
+
+
+.main-button {
+    margin-top: 25px;
+
+    padding: 15px 28px;
+
+    border-radius: 30px;
+
+    background: #d63384;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.2);
+}
+
+
+.main-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   GAME SCREEN
+========================= */
+
+#gameScreen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #8ed8ff;
+}
+
+
+/* =========================
+   HUD
+========================= */
+
+.hud {
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+    right: 12px;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 15px;
+
+    background: rgba(255,255,255,0.92);
+
+    border-radius: 15px;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   WORLD
+========================= */
+
+#world {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3000px;
+    min-width: 3000px;
+    height: calc(100vh - 90px);
+
+    background:
+        linear-gradient(
+            #82d8ff 0%,
+            #bceeff 60%,
+            #9cdb76 60%,
+            #65b94e 100%
+        );
+
+    overflow: visible;
+
+    transition: transform 0.05s linear;
+}
+
+
+/* =========================
+   CLOUDS
+========================= */
+
+.cloud {
+    position: absolute;
+
+    font-size: 70px;
+
+    opacity: 0.8;
+}
+
+.cloud1 {
+    left: 300px;
+    top: 100px;
+}
+
+.cloud2 {
+    left: 1300px;
+    top: 150px;
+}
+
+
+/* =========================
+   PLAYER
+========================= */
+
+
+/* =========================
+   GROUND
+========================= */
+
+.ground {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 3000px;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            #56aa45 0 15px,
+            #87552f 15px 100%
+        );
+
+    border-top: 12px solid #43a047;
+}
+
+/* =========================
+   PLATFORMS
+========================= */
+
+.platform {
+    position: absolute;
+
+    height: 25px;
+
+    background: #43a047;
+
+    border-radius: 8px 8px 3px 3px;
+
+    border-bottom:
+        12px solid #76502d;
+}
+
+
+.p1 {
+    left: 450px;
+    bottom: 210px;
+    width: 220px;
+}
+
+
+.p2 {
+    left: 900px;
+    bottom: 300px;
+    width: 230px;
+}
+
+
+.p3 {
+    left: 1450px;
+    bottom: 190px;
+    width: 260px;
+}
+
+
+.p4 {
+    left: 2050px;
+    bottom: 280px;
+    width: 230px;
+}
+
+
+/* =========================
+   COLLECTIBLES
+========================= */
+
+.collectible {
+    position: absolute;
+
+    font-size: 40px;
+
+    z-index: 30;
+
+    animation:
+        floating 0.9s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes floating {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+.tulip1 {
+    left: 520px;
+    bottom: 250px;
+}
+
+.tulip2 {
+    left: 950px;
+    bottom: 340px;
+}
+
+.tulip3 {
+    left: 1200px;
+    bottom: 115px;
+}
+
+.tulip4 {
+    left: 1520px;
+    bottom: 230px;
+}
+
+.tulip5 {
+    left: 2120px;
+    bottom: 320px;
+}
+
+
+.star {
+    font-size: 32px;
+}
+
+
+.star1 {
+    left: 750px;
+    bottom: 140px;
+}
+
+.star2 {
+    left: 1350px;
+    bottom: 150px;
+}
+
+.star3 {
+    left: 1900px;
+    bottom: 150px;
+}
+
+
+/* =========================
+   OBSTACLES
+========================= */
+
+.obstacle {
+    position: absolute;
+
+    font-size: 45px;
+
+    z-index: 40;
+}
+
+
+.obstacle1 {
+    left: 800px;
+    bottom: 100px;
+}
+
+
+.obstacle2 {
+    left: 1250px;
+    bottom: 100px;
+}
+
+
+.obstacle3 {
+    left: 1800px;
+    bottom: 100px;
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+.gift {
+    position: absolute;
+
+    left: 2700px;
+    bottom: 105px;
+
+    font-size: 90px;
+
+    z-index: 40;
+
+    animation:
+        giftBounce 0.8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.gift-label {
+    position: absolute;
+
+    top: 25px;
+    left: 34px;
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+@keyframes giftBounce {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+
+}
+
+
+/* =========================
+   MOBILE CONTROLS
+========================= */
+
+.controls {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 12px;
+
+    z-index: 200;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 25px;
+}
+
+
+.controls button {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 27px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+/* =========================
+   BRACELET REVEAL
+========================= */
+
+.bracelet-card {
+    max-height: 95%;
+    overflow-y: auto;
+}
+
+
+.sparkles {
+    font-size: 35px;
+}
+
+
+.gift-intro {
+    color: #d63384;
+}
+
+
+.bracelet-photo-box {
+    margin: 20px auto;
+
+    width: min(90%, 360px);
+
+    padding: 8px;
+
+    background: #fff3f8;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.15);
+}
+
+
+.bracelet-photo-box img {
+    display: block;
+
+    width: 100%;
+
+    border-radius: 15px;
+}
+
+
+.parents-message {
+    color: #555;
+}
+
+
+.big-heart {
+    font-size: 45px;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .story-card,
+    .gift-card,
+    .bracelet-card {
+        padding: 25px;
+    }
+
+    .hud {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .controls button {
+        width: 60px;
+        height: 60px;
+    }
+
+}
+/* SISTER CHARACTER */
+#player {
+    position: absolute;
+    width: 65px;
+    height: 90px;
+    z-index: 50;
+
+    background-image: url("images/sister-sprite.png");
+    background-repeat: no-repeat;
+    background-size: 260px 90px;
+    background-position: 0 0;
+}
+
+/* Walking animation */
+@keyframes sisterWalk {
+    from {
+        background-position: -65px 0;
+    }
+    to {
+        background-position: -195px 0;
+    }
+}
+
+#player.walking {
+    animation: sisterWalk 0.35s steps(2) infinite;
+}
+
+/* Jumping pose = Frame 4 */
+#player.jumping {
+    animation: none;
+    background-position: -195px 0;
+}
+/* =========================
+   LEVEL 2 - MEMORY HUNT
+   ========================= */
+
+#level2Screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #9bdcff;
+}
+
+#level2World {
+    position: absolute;
+    width: 3000px;
+    height: calc(100vh - 90px);
+    left: 0;
+    top: 0;
+    overflow: visible;
+    background:
+        linear-gradient(
+            #8ed8ff 0%,
+            #d8f5ff 58%,
+            #a8df82 58%,
+            #62b94f 100%
+        );
+}
+
+/* Title */
+
+.level2Title {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.9);
+    color: #e75480;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Counter */
+
+.memoryCounter {
+    position: fixed;
+    top: 75px;
+    left: 20px;
+    z-index: 100;
+    padding: 10px 18px;
+    border-radius: 20px;
+    background: white;
+    font-weight: bold;
+    color: #7b4ab5;
+}
+
+/* Level 2 player */
+
+#level2Player {
+    position: absolute;
+    width: 65px;
+    height: 90px;
+    left: 100px;
+    bottom: 105px;
+    z-index: 50;
+}
+
+#level2Player img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Ground */
+
+.l2ground {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3000px;
+    height: 105px;
+    background:
+        linear-gradient(
+            #56aa45 0 15px,
+            #87552f 15px 100%
+        );
+    border-top: 12px solid #43a047;
+}
+
+/* Platforms */
+
+.l2platform {
+    position: absolute;
+    height: 25px;
+    border-radius: 8px;
+    background: #9b63d5;
+    border: 4px solid #7042a8;
+    box-shadow: 0 5px 0 rgba(0,0,0,0.15);
+}
+
+.l2platform.p1 {
+    left: 400px;
+    bottom: 220px;
+    width: 220px;
+}
+
+.l2platform.p2 {
+    left: 900px;
+    bottom: 230px;
+    width: 240px;
+}
+
+.l2platform.p3 {
+    left: 1500px;
+    bottom: 230px;
+    width: 250px;
+}
+
+/* Memory icons */
+
+.memory {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    background: white;
+    border: 5px solid #ff82b2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 40;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    animation: memoryFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes memoryFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Memory positions */
+
+.memory1 {
+    left: 300px;
+    bottom: 125px;
+}
+
+.memory2 {
+    left: 550px;
+    bottom: 260px;
+}
+
+.memory3 {
+    left: 1000px;
+    bottom: 270px;
+}
+
+.memory4 {
+    left: 1400px;
+    bottom: 125px;
+}
+
+.memory5 {
+    left: 1850px;
+    bottom: 260px;
+}
+
+/* Memory popup */
+
+.memoryPopup {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.75);
+    padding: 20px;
+}
+
+.memoryPopup h2 {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.memoryPopup img {
+    width: min(80vw, 400px);
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 5px solid white;
+}
+
+.memoryPopup p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.memoryPopup button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #ff69a4;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* LEVEL 2 VISIBILITY FIX */
+
+#level2Screen {
+    display: block !important;
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+#level2Screen.hidden {
+    display: none !important;
+}
+
+#level2World {
+    display: block !important;
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 3000px;
+    height: calc(100vh - 90px);
+    min-height: 500px;
+    z-index: 1;
+}
+
+.level2Title,
+.memoryCounter {
+    display: block !important;
+    z-index: 100 !important;
+}
+
+#level2Player {
+    display: block !important;
+    z-index: 50 !important;
+}
+
+.memory {
+    display: flex !important;
+    z-index: 40 !important;
+}
+
+.l2platform {
+    display: block !important;
+    z-index: 20 !important;
+}
+
+.l2ground {
+    display: block !important;
+    z-index: 10 !important;
+}
+/* MEMORY PHOTO FIX */
+
+#memoryPopup {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+}
+
+#memoryPopup.hidden {
+    display: none !important;
+}
+
+#memoryImage {
+    display: block !important;
+    width: 350px !important;
+    height: auto !important;
+    max-height: 55vh !important;
+    object-fit: contain !important;
+    background: white !important;
+    border: 5px solid white !important;
+    border-radius: 15px !important;
+    position: relative !important;
+    z-index: 10000 !important;
+}
+/* =========================
+   LEVEL 2 ENDING
+   ========================= */
+
+.level2Ending {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: linear-gradient(135deg, #ffb6d9, #c9b6ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.level2Ending.hidden {
+    display: none !important;
+}
+
+.level2Ending h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.level2Ending h2 {
+    color: white;
+    background: rgba(0,0,0,0.2);
+    padding: 12px 25px;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.level2Ending p {
+    color: white;
+    font-size: 19px;
+    max-width: 600px;
+    line-height: 1.5;
+    margin: 8px;
+}
+/* =========================
+   LEVEL 3 - SECRET ROOM
+   ========================= */
+
+#level3Screen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #241b35;
+    z-index: 2000;
+}
+
+#level3Screen.hidden {
+    display: none !important;
+}
+
+#level3World {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3000px;
+    height: calc(100vh - 90px);
+    min-height: 500px;
+    overflow: visible;
+
+    background:
+        linear-gradient(
+            #35264d 0%,
+            #4b3565 65%,
+            #6b4935 65%,
+            #3d2920 100%
+        );
+}
+
+/* Title */
+
+.level3Title {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    padding: 10px 25px;
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.95);
+    color: #6d3fa3;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Key counter */
+
+.keyCounter {
+    position: fixed;
+    top: 75px;
+    left: 20px;
+    z-index: 100;
+
+    padding: 10px 18px;
+    border-radius: 20px;
+
+    background: white;
+    color: #6d3fa3;
+
+    font-weight: bold;
+}
+
+/* Player */
+
+#level3Player {
+    position: absolute;
+
+    width: 65px;
+    height: 90px;
+
+    left: 100px;
+    bottom: 105px;
+
+    z-index: 50;
+}
+
+#level3Player img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Ground */
+
+.l3ground {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 3000px;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            #8b5a3c 0 15px,
+            #3b2921 15px 100%
+        );
+
+    border-top: 12px solid #a8754d;
+}
+
+/* Platforms */
+
+.l3platform {
+    position: absolute;
+
+    height: 25px;
+
+    border-radius: 8px;
+
+    background: #8d63b8;
+    border: 4px solid #68428c;
+
+    box-shadow: 0 5px 0 rgba(0,0,0,0.25);
+}
+
+.l3p1 {
+    left: 400px;
+    bottom: 210px;
+    width: 220px;
+}
+
+.l3p2 {
+    left: 900px;
+    bottom: 300px;
+    width: 230px;
+}
+
+.l3p3 {
+    left: 1450px;
+    bottom: 220px;
+    width: 250px;
+}
+
+/* Keys */
+
+.secretKey {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    background: rgba(255,255,255,0.95);
+    border: 4px solid #ffd45c;
+    border-radius: 50%;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    z-index: 40;
+
+    animation: keyFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes keyFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.key1 {
+    left: 300px;
+    bottom: 125px;
+}
+
+.key2 {
+    left: 1000px;
+    bottom: 310px;
+}
+
+.key3 {
+    left: 1550px;
+    bottom: 255px;
+}
+
+/* Mystery boxes */
+
+.mysteryBox {
+    position: absolute;
+
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
+
+    background: #fff4d6;
+    border: 5px solid #d39a3a;
+    border-radius: 12px;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+
+    z-index: 35;
+}
+
+.box1 {
+    left: 650px;
+    bottom: 115px;
+}
+
+.box2 {
+    left: 1250px;
+    bottom: 115px;
+}
+
+.box3 {
+    left: 1800px;
+    bottom: 115px;
+}
+
+/* Secret popup */
+
+.secretPopup {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: rgba(15, 8, 25, 0.9);
+
+    padding: 25px;
+}
+
+.secretPopup.hidden {
+    display: none !important;
+}
+
+.secretPopup h2 {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#secretContent {
+    max-width: 600px;
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+#closeSecret {
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #ff69a4;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+/* =========================
+   EARRINGS SURPRISE
+   ========================= */
+
+#earringsScreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd6e7,
+            #fff4d6,
+            #e8d8ff
+        );
+
+    overflow-y: auto;
+}
+#earringsScreen.hidden {
+
+    display: none !important;
+}
+
+#earringsScreen:not(.hidden) {
+    display: flex !important;
+}
+
+.earringsCard {
+    width: min(90%, 600px);
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.2);
+}
+
+.earringsCard h1 {
+    color: #e75480;
+    margin-bottom: 10px;
+}
+
+.earringsCard h2 {
+    color: #8b4fa8;
+}
+
+#earringsImage {
+    display: block;
+
+    width: min(350px, 80vw);
+    max-height: 350px;
+
+    object-fit: contain;
+
+    margin: 20px auto;
+
+    border-radius: 20px;
+
+    border: 6px solid white;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.2);
+}
+
+.earringsCard p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #555;
+}
+
+#waitButton {
+    margin-top: 15px;
+
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #e75480;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* =========================
+   LEVEL 4 - CRICKET CHALLENGE
+========================= */
+
+#level4Screen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #8ed8ff;
+    z-index: 3000;
+}
+
+#level4Screen.hidden {
+    display: none !important;
+}
+
+
+/* CRICKET WORLD */
+
+#level4World {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 3000px;
+    height: calc(100vh - 90px);
+
+    overflow: visible;
+
+    background:
+        linear-gradient(
+            #7dd3ff 0%,
+            #c9f0ff 55%,
+            #7fcf5a 55%,
+            #4da33c 100%
+        );
+}
+
+
+/* TITLE */
+
+.level4Title {
+    position: fixed;
+
+    top: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    padding: 10px 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    color: #16803c;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+/* SCORE */
+
+.cricketScore {
+    position: fixed;
+
+    top: 70px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    padding: 8px 20px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 20px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* PLAYER */
+
+#level4Player {
+    position: absolute;
+
+    width: 65px;
+    height: 90px;
+
+    z-index: 50;
+}
+
+#level4Player img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* CRICKET BALLS */
+
+.cricketBall {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+
+    z-index: 40;
+
+    animation:
+        cricketFloat 0.8s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes cricketFloat {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+/* BALL POSITIONS */
+
+.ball1 {
+    left: 450px;
+    bottom: 150px;
+}
+
+.ball2 {
+    left: 850px;
+    bottom: 260px;
+}
+
+.ball3 {
+    left: 1250px;
+    bottom: 150px;
+}
+
+.ball4 {
+    left: 1700px;
+    bottom: 270px;
+}
+
+.ball5 {
+    left: 2200px;
+    bottom: 150px;
+}
+
+
+/* PLATFORMS */
+
+.l4platform {
+    position: absolute;
+
+    height: 25px;
+
+    background: #43a047;
+
+    border-radius: 8px 8px 3px 3px;
+
+    border-bottom: 12px solid #76502d;
+}
+
+
+.l4p1 {
+    left: 700px;
+    bottom: 210px;
+    width: 220px;
+}
+
+
+.l4p2 {
+    left: 1100px;
+    bottom: 300px;
+    width: 230px;
+}
+
+
+.l4p3 {
+    left: 1650px;
+    bottom: 220px;
+    width: 240px;
+}
+
+
+/* GROUND */
+
+.l4ground {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 3000px;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            #62b84f 0 15px,
+            #4d9f3e 15px 100%
+        );
+
+    border-top: 12px solid #3d9435;
+}
+
+
+/* LEVEL 4 ENDING */
+
+.level4Ending {
+    position: fixed;
+
+    inset: 0;
+    overflow-y: auto;
+box-sizing: border-box;
+padding-bottom: 40px;
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4d6,
+            #d8f5ff,
+            #e5d6ff
+        );
+}
+
+
+.level4Ending.hidden {
+    display: none !important;
+}
+
+
+.cricketTrophy {
+    font-size: 90px;
+}
+
+
+.level4Ending h1 {
+    margin: 15px 0;
+
+    color: #16803c;
+
+    font-size: 36px;
+}
+
+
+.level4Ending p {
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin: 8px 0;
+}

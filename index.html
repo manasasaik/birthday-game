@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sister's Birthday Adventure</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- START SCREEN -->
+    <section id="startScreen" class="screen">
+
+        <div class="story-card">
+
+            <div class="cake">🎂</div>
+
+            <h1>Birthday Adventure</h1>
+
+            <p class="pink-text">
+                A secret adventure made especially for you ❤️
+            </p>
+
+            <p>
+                Your first mission is waiting...
+            </p>
+
+            <button id="startButton" class="main-button">
+                START LEVEL 1 🎮
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- GAME -->
+    <section id="gameScreen" class="hidden">
+
+        <!-- HUD -->
+
+        <div class="hud">
+
+            <div>
+                ❤️ <span id="lives">3</span>
+            </div>
+
+            <div>
+                🌷 <span id="tulips">0</span>/5
+            </div>
+
+            <div>
+                ⭐ <span id="score">0</span>
+            </div>
+
+            <div>
+                LEVEL 1
+            </div>
+
+        </div>
+
+
+        <!-- GAME WORLD -->
+
+        <div id="world">
+
+            <div class="cloud cloud1">☁️</div>
+            <div class="cloud cloud2">☁️</div>
+
+            <!-- Player -->
+<div id="player"></div>
+
+            <!-- Tulips -->
+
+            <div class="collectible tulip tulip1">🌷</div>
+            <div class="collectible tulip tulip2">🌷</div>
+            <div class="collectible tulip tulip3">🌷</div>
+            <div class="collectible tulip tulip4">🌷</div>
+            <div class="collectible tulip tulip5">🌷</div>
+
+
+            <!-- Stars -->
+
+            <div class="collectible star star1">⭐</div>
+            <div class="collectible star star2">⭐</div>
+            <div class="collectible star star3">⭐</div>
+
+
+            <!-- Platforms -->
+
+            <div class="ground"></div>
+
+            <div class="platform p1"></div>
+            <div class="platform p2"></div>
+            <div class="platform p3"></div>
+            <div class="platform p4"></div>
+
+
+            <!-- Obstacles -->
+
+            <div class="obstacle obstacle1">🪨</div>
+            <div class="obstacle obstacle2">🌵</div>
+            <div class="obstacle obstacle3">🪨</div>
+
+
+            <!-- Finish -->
+
+            <div id="gift" class="gift">
+
+                🎁
+
+                <div class="gift-label">
+                    ?
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE CONTROLS -->
+
+        <div class="controls">
+
+            <button id="leftButton">◀</button>
+
+            <button id="jumpButton">⬆</button>
+
+            <button id="rightButton">▶</button>
+
+        </div>
+
+    </section>
+
+
+    <!-- GIFT SCREEN -->
+
+    <section id="giftScreen" class="screen hidden">
+
+        <div class="gift-card">
+
+            <div id="giftBox" class="opening-gift">
+                🎁
+            </div>
+
+            <h1 id="giftTitle">
+                You found a mystery gift!
+            </h1>
+
+            <p id="giftMessage">
+                Something special is waiting for you...
+            </p>
+
+            <button id="openGiftButton" class="main-button">
+                OPEN THE GIFT 🎁
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- BRACELET REVEAL -->
+
+    <section id="braceletScreen" class="screen hidden">
+
+        <div class="bracelet-card">
+
+            <div class="sparkles">
+                ✨ 🌷 ✨
+            </div>
+
+            <h1>
+                SURPRISE! 🌷
+            </h1>
+
+            <p class="gift-intro">
+                Your first birthday gift has been unlocked!
+            </p>
+
+
+            <div class="bracelet-photo-box">
+
+                <img
+                    src="images/tulip_bracelet.jpeg"
+                    alt="Tulip bracelet birthday gift"
+                >
+
+            </div>
+
+
+            <h2>
+                A little something for you ❤️
+            </h2>
+
+            <p class="parents-message">
+                This isn't just a picture...
+                <br><br>
+
+                <strong>
+                    Your real gift is waiting for you!
+                </strong>
+
+                <br><br>
+
+                Go check what Mom & Dad have for you. 👀🎁
+            </p>
+
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+
+            <button id="gotGiftButton" class="main-button">
+                I GOT MY GIFT! ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEVEL COMPLETE -->
+
+    <section id="completeScreen" class="screen hidden">
+
+        <div class="story-card">
+
+            <div class="big">
+                🎉
+            </div>
+
+            <h1>
+                Gift #1 Unlocked!
+            </h1>
+
+            <p>
+                You found your first birthday surprise. 🌷
+            </p>
+
+            <p>
+                But your adventure isn't over...
+            </p>
+
+            <button id="nextButton" class="main-button">
+                CONTINUE TO LEVEL 2 ➜
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+<!-- LEVEL 2 -->
+<section id="level2Screen" class="screen hidden">
+
+    <div id="level2World">
+
+        <div class="level2Title">
+            📸 MEMORY HUNT
+        </div>
+
+        <div class="memoryCounter">
+            Memories: <span id="memoryCount">0</span> / 5
+        </div>
+
+        <!-- Player -->
+        <div id="level2Player">
+            <img src="images/sister-character.png" alt="Sister">
+        </div>
+
+        <!-- Platforms -->
+        <div class="l2platform p1"></div>
+        <div class="l2platform p2"></div>
+        <div class="l2platform p3"></div>
+
+        <!-- Memories -->
+        <div class="memory memory1" data-memory="1">📸</div>
+        <div class="memory memory2" data-memory="2">📸</div>
+        <div class="memory memory3" data-memory="3">📸</div>
+        <div class="memory memory4" data-memory="4">📸</div>
+        <div class="memory memory5" data-memory="5">📸</div>
+
+        <div class="l2ground"></div>
+
+    </div>
+
+    <!-- Memory popup -->
+    <div id="memoryPopup" class="memoryPopup hidden">
+        <h2>💖 MEMORY FOUND!</h2>
+
+<img id="memoryImage" src="images/memory1.jpg" alt="Memory">
+        <p id="memoryText"></p>
+
+        <button id="closeMemory">Continue ❤️</button>
+    </div>
+    <!-- LEVEL 2 ENDING -->
+<div id="level2Ending" class="level2Ending hidden">
+
+    <h1>🎉 YOU FOUND ALL 5 MEMORIES! 🎉</h1>
+
+    <p>
+        But your birthday adventure isn't over yet... 👀❤️
+    </p>
+
+    <p>
+        🎁 Your next surprise is with me!
+    </p>
+
+    <p>
+        I'm at the hostel right now, so you'll have to wait... 🥹
+    </p>
+
+    <p>
+        When I come home, I'll bring your
+        <strong>second surprise</strong> and give it to you! 🎁❤️
+    </p>
+
+    <h2>🔒 LEVEL 3 IS LOCKED</h2>
+
+    <p>
+        Wait until I come home... ❤️
+    </p>
+
+    <button id="testLevel3Button" onclick="startLevel3()">
+    🔐 TEST LEVEL 3
+</button>
+</div>
+
+</section>
+<!-- LEVEL 3 - SECRET ROOM -->
+<section id="level3Screen" class="hidden">
+
+    <div id="level3World">
+
+        <div class="level3Title">
+            🔐 THE SECRET ROOM
+        </div>
+
+        <div class="keyCounter">
+            🔑 Keys: <span id="keyCount">0</span> / 3
+        </div>
+
+        <!-- Player -->
+        <div id="level3Player">
+            <img src="images/sister-character.png" alt="Sister">
+        </div>
+
+        <!-- Platforms -->
+        <div class="l3platform l3p1"></div>
+        <div class="l3platform l3p2"></div>
+        <div class="l3platform l3p3"></div>
+
+        <!-- Keys -->
+        <div class="secretKey key1" data-key="1">🔑</div>
+        <div class="secretKey key2" data-key="2">🔑</div>
+        <div class="secretKey key3" data-key="3">🔑</div>
+
+        <!-- Three mystery boxes -->
+        <div class="mysteryBox box1" data-box="1">📦</div>
+        <div class="mysteryBox box2" data-box="2">📦</div>
+        <div class="mysteryBox box3" data-box="3">📦</div>
+
+        <!-- Ground -->
+        <div class="l3ground"></div>
+
+    </div>
+
+    <!-- Secret message popup -->
+    <div id="secretPopup" class="secretPopup hidden">
+
+        <h2 id="secretTitle">🔓 BOX OPENED!</h2>
+
+        <div id="secretContent"></div>
+
+        <button id="closeSecret">
+            Continue ❤️
+        </button>
+
+    </div>
+    </section>
+<!-- LEVEL 3 EARRINGS SURPRISE -->
+<section id="earringsScreen" class="hidden">
+
+    <div class="earringsCard">
+
+        <h1>🎉 YOU DID IT! 🎉</h1>
+
+        <h2>💖 A LITTLE SOMETHING FOR YOU...</h2>
+
+        <img
+    id="earringsImage"
+    src="images/earrings.jpeg"
+    alt="Your surprise earrings"
+    onerror="this.alt='Earrings image could not be loaded';"
+>
+
+        <p>
+            🎁 This is your next surprise!
+        </p>
+
+        <p>
+            But... you have to wait for me to come home. 🥹❤️
+        </p>
+
+        <p>
+            I'm at the hostel right now!
+            When I come home, I'll bring these for you. 🎀
+        </p>
+
+        <p>
+            🤫 Don't worry... there are still more surprises waiting!
+        </p>
+
+        <button id="waitButton">
+            💗 I'LL WAIT FOR YOU!
+        </button>
+
+    </div>
+
+
+
+</section>
+<!-- =========================
+     LEVEL 4 - CRICKET CHALLENGE
+========================= -->
+
+<section id="level4Screen" class="screen hidden">
+
+    <div id="level4World">
+
+        <div class="level4Title">
+            🏏 CRICKET CHALLENGE
+        </div>
+
+        <div class="cricketScore">
+            🏏 Runs: <span id="runCount">0</span> / 5
+        </div>
+
+        <!-- Player -->
+<div id="level4Player">
+    <img
+        id="level4PlayerImage"
+        src="images/sister_idle.png"
+        alt="Sister"
+    >
+</div>
+
+        <!-- Cricket balls -->
+        <div class="cricketBall ball1">🏏</div>
+        <div class="cricketBall ball2">🏏</div>
+        <div class="cricketBall ball3">🏏</div>
+        <div class="cricketBall ball4">🏏</div>
+        <div class="cricketBall ball5">🏏</div>
+
+        <!-- Platforms -->
+        <div class="l4platform l4p1"></div>
+        <div class="l4platform l4p2"></div>
+        <div class="l4platform l4p3"></div>
+
+        <!-- Ground -->
+        <div class="l4ground"></div>
+
+    </div>
+
+    <!-- Level 4 complete -->
+    <div id="level4Ending" class="level4Ending hidden">
+
+    <div class="cricketTrophy">
+        🏆
+    </div>
+
+    <h1>🎉 CHAMPION! YOU DID IT! 🎉</h1>
+
+    <h2>🏏 5 RUNS! 🏏</h2>
+
+    <p>
+        You collected every run.
+    </p>
+
+    <p>
+        You conquered every challenge.
+    </p>
+
+    <p>
+        And you unlocked every surprise! ❤️
+    </p>
+
+    <hr>
+
+    <h2>🎂 MISSION: FIND THE REAL SURPRISE 🎂</h2>
+
+    <p>
+        Your next clue is waiting somewhere
+        outside this screen...
+    </p>
+
+    <p>
+        ❤️ <strong>Go to Mom & Dad.</strong> ❤️
+    </p>
+
+    <p>
+        Something delicious is waiting for you... 👀
+    </p>
+
+    <h2>🔎 YOUR FINAL MISSION</h2>
+
+    <p>
+        Don't just look at it...
+    </p>
+
+    <p>
+        🎂 <strong>
+        MAKE A WISH, LIGHT THE CANDLES,
+        AND CUT YOUR BIRTHDAY CAKE!
+        </strong> 🎂
+    </p>
+
+    <p>
+        And remember...
+    </p>
+
+    <p>
+        This cake isn't the end of your birthday adventure.
+        <br>
+        It's the beginning of another beautiful year. ❤️
+    </p>
+
+    <h2>
+        👑 GO CLAIM YOUR CAKE, BIRTHDAY QUEEN! 👑
+    </h2>
+
+</div> 
+</section>
+
+<script src="game.js"></script>
+
+</body>
+</html>
